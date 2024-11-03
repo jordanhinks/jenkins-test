@@ -10,6 +10,18 @@ pipeline {
     }
 
     stages {
+        stage('Setup') {
+            steps {
+                script {
+                    echo "Setting up virtual environment..."
+                    sh '''
+                        cd myapp
+                        python3 -m venv ${VENV_DIR}
+                        . ${VENV_DIR}/bin/activate
+                    '''
+                }
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
