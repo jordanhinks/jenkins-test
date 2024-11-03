@@ -5,9 +5,9 @@ pipeline {
         }
     }
 
-    triggers {
-        pollSCM '* * * * *'
-    }
+    // triggers {
+    //     pollSCM '* * * * *'
+    // }
 
     environment {
         VENV_DIR = "${WORKSPACE}/venv"
