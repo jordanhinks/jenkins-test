@@ -7,12 +7,17 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    environment {
+        VENV_DIR = "${WORKSPACE}/venv"
+    }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
                     cd myapp
+                    python3 -m venv ${VENV_DIR}
+                    . ${VENV_DIR}/bin/activate
                     pip install -r requirements.txt
                 '''
             }
