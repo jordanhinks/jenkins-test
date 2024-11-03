@@ -1,12 +1,7 @@
 pipeline {
-    // agent { 
-    //     node {
-    //         label 'docker-agent-python'
-    //     }
-    // }
-    agent {
-        docker {
-            image "python:3.9-slim"
+    agent { 
+        node {
+            label 'docker-agent-pythonslim'
         }
     }
 
