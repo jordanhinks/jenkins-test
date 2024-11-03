@@ -1,15 +1,23 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
+    // agent { 
+    //     node {
+    //         label 'docker-agent-python'
+    //     }
+    // }
+    agent {
+        docker {
+            image "python:3.9-slim"
+        }
+    }
+
     triggers {
         pollSCM '* * * * *'
     }
+
     environment {
         VENV_DIR = "${WORKSPACE}/venv"
     }
+
     stages {
         stage('Build') {
             steps {
